@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+
+  rnd:
+    build: .
+    #TODO: environment variable examples
+    ports:
+      - "8080:80"
