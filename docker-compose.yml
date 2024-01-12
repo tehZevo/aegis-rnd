@@ -3,6 +3,11 @@ services:
 
   rnd:
     build: .
-    #TODO: environment variable examples
     ports:
       - "8080:80"
+    volumes:
+      - "./models:/app/models"
+    environment:
+      INPUT_SIZE: 32
+      SAVE_PATH: "models"
+      AUTOSAVE_STEPS: 50 #you would likely want to increase this to eg 1000

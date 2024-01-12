@@ -1,18 +1,16 @@
-FROM python:3.7
+#TODO: pin version
+FROM tensorflow/tensorflow
+#:2.15.0-gpu
 
 WORKDIR /app
 
-# RUN mkdir -p /app/models
+run apt update -y
+RUN apt install git -y
 
-RUN apt-get update
-RUN apt-get install git -y
-RUN pip install --upgrade pip
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install --ignore-installed -r requirements.txt
 
 COPY . .
 
 EXPOSE 80
-# VOLUME ["/app/models"]
-
 CMD [ "python", "-u", "main.py" ]
